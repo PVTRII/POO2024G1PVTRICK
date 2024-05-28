@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package pe.edu.upeu.syscenterlife.gui;
 
 import java.awt.BorderLayout;
@@ -24,10 +28,11 @@ import pe.edu.upeu.syscenterlife.modelo.MenuMenuItenTO;
 import pe.edu.upeu.syscenterlife.servicio.MenuMenuItemDao;
 import pe.edu.upeu.syscenterlife.servicio.MenuMenuItemDaoI;
 import pe.edu.upeu.syscenterlife.util.UtilsX;
+
 @Component
 public class GUIMain extends JFrame {
-    
-        Preferences userPrefs = Preferences.userRoot();
+
+    Preferences userPrefs = Preferences.userRoot();
     JMenuBar menuBar;
     JTabbedPane jtpane;
     JScrollPane scrollPane;
@@ -38,27 +43,6 @@ public class GUIMain extends JFrame {
     List<MenuMenuItenTO> lista;
     MenuMenuItemDaoI mmiDao;
     ConfigurableApplicationContext ctx;
-
-    public int[] contarMenuMunuItem(List<MenuMenuItenTO> data) {
-        int menui = 0, menuitem = 0;
-        String menuN = "";
-        for (MenuMenuItenTO mmi : data) {
-            if (!mmi.menunombre.equals(menuN)) {
-                menuN = mmi.menunombre;
-                menui++;
-            }
-            if (!mmi.menuitemnombre.equals("")) {
-                menuitem++;
-            }
-        }
-        return new int[]{menui, menuitem};
-    }
-
-    public void setContexto(ConfigurableApplicationContext ctx) {
-        this.ctx = ctx;
-    }
-
-
 
     public GUIMain() {
         myresources = util.detectLanguage(userPrefs.get("IDIOMAX", "es"));
@@ -111,10 +95,26 @@ public class GUIMain extends JFrame {
         jtpane = new JTabbedPane();
         this.getContentPane().add(BorderLayout.NORTH, menuBar);
         this.add(BorderLayout.CENTER, jtpane);
-
     }
 
+    public int[] contarMenuMunuItem(List<MenuMenuItenTO> data) {
+        int menui = 0, menuitem = 0;
+        String menuN = "";
+        for (MenuMenuItenTO mmi : data) {
+            if (!mmi.menunombre.equals(menuN)) {
+                menuN = mmi.menunombre;
+                menui++;
+            }
+            if (!mmi.menuitemnombre.equals("")) {
+                menuitem++;
+            }
+        }
+        return new int[]{menui, menuitem};
+    }
 
+    public void setContexto(ConfigurableApplicationContext ctx) {
+        this.ctx = ctx;
+    }
 
     class SampleMenuListener implements MenuListener {
 
@@ -145,19 +145,19 @@ public class GUIMain extends JFrame {
                     .equals("micliente")) {
                 System.out.println("Holas si llega");
                 jtpane.removeAll();
-                //MainCliente mc = new MainCliente();
-                MainCliente mc = ctx.getBean(MainCliente.class);
-                mc.setContext(ctx);
-                mc.setPreferredSize(new Dimension(1024, 600));
-                scrollPane = new JScrollPane(mc);
-                scrollPane.setHorizontalScrollBarPolicy(
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                jtpane.add(scrollPane, "Cliente");
-                contai.add(BorderLayout.CENTER, jtpane);
-                contai.validate();
-                contai.repaint();
+            //MainCliente mc = new MainCliente();
+            MainCliente mc = ctx.getBean(MainCliente.class);
+            mc.setContext(ctx);
+            mc.setPreferredSize(new Dimension(1024, 600));
+            scrollPane = new JScrollPane(mc);
+            scrollPane.setHorizontalScrollBarPolicy(
+            JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            scrollPane.setVerticalScrollBarPolicy(
+            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            jtpane.add(scrollPane, "Cliente");
+            contai.add(BorderLayout.CENTER, jtpane);
+            contai.validate();
+            contai.repaint();
             }
             if (((JMenuItem) e.getSource()).getName().equals("miareaperiodo")) {
                 System.out.println("Si llega!");
@@ -166,6 +166,6 @@ public class GUIMain extends JFrame {
                 jtpane.removeAll();//remueve todo el contenido
             }
         }
-
     }
+
 }

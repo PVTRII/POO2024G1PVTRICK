@@ -2,20 +2,18 @@ package pe.edu.upeu.syscenterlife;
 
 import java.awt.EventQueue;
 import java.util.prefs.Preferences;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import pe.edu.upeu.syscenterlife.gui.Login;
 import pe.edu.upeu.syscenterlife.util.UtilsX;
-import pe.edu.upeu.syscenterlife.gui.*;
 
 @SpringBootApplication
 public class SysAlmacenVcApplication {
 
     public static void main(String[] args) {
         //SpringApplication.run(SysAlmacenVcApplication.class, args);
-        
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(SysAlmacenVcApplication.class)
                 .headless(false)
                 .web(WebApplicationType.NONE)
@@ -29,7 +27,6 @@ public class SysAlmacenVcApplication {
             ex.setVisible(true);
         });
 
-        
     }
 
 }

@@ -10,7 +10,6 @@ import pe.edu.upeu.syscenterlife.modelo.MenuMenuItenTO;
 public class MenuMenuItemDao implements MenuMenuItemDaoI {
 
     @Override
-
     public List<MenuMenuItenTO> listaAccesos(String perfil, Properties idioma) {
         List<MenuMenuItenTO> lista = new ArrayList<>();
         lista.add(new MenuMenuItenTO(idioma.getProperty("menu.nombre.archivo"), "", "mifile"));
@@ -21,8 +20,7 @@ public class MenuMenuItemDao implements MenuMenuItemDaoI {
                 idioma.getProperty("menuitem.nombre.postulante"), "miselectall"));
         lista.add(new MenuMenuItenTO("Help", "Ver1", "miver1"));
         lista.add(new MenuMenuItenTO("Help", "Ver2", "miver2"));
-        lista.add(new MenuMenuItenTO("Principal", "Cliente ", "cliente"));
-
+        lista.add(new MenuMenuItenTO("Principal", "Cliente", "cliente"));
         lista.add(new MenuMenuItenTO("Principal", "Area Periodo", "areaperiodo"));
         List<MenuMenuItenTO> accesoReal = new ArrayList<>();
         switch (perfil) {
